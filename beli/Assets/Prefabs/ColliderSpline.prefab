@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4726627053810278194}
   - component: {fileID: 6294279961733376814}
   - component: {fileID: 7063950300099857331}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ColliderSpline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteShapeRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 568728339
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Color: {r: 0.16176572, g: 0.23423839, b: 0.6037736, a: 1}
