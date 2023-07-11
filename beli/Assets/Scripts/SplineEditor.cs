@@ -9,6 +9,8 @@ public class SplineEditor : MonoBehaviour
     public GameObject controlPointPrefab;
 
     private List<GameObject> controlPoints = new List<GameObject>();
+    private List<GameObject> leftTangentPoints = new List<GameObject>();
+    private List<GameObject> rightTangentPoints = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +21,23 @@ public class SplineEditor : MonoBehaviour
         Spline spline = spriteShapeController.spline;
         int pointCount = spline.GetPointCount();
 
-        // add control points to spline
+        // add control points and tangents to spline
         for (int i = 0; i < pointCount; i++)
         {
             Vector3 point = spline.GetPosition(i);
+            Vector3 leftTangent = spline.GetLeftTangent(i);
+            Vector3 rightTangent = spline.GetRightTangent(i);
             GameObject controlPoint = Instantiate(controlPointPrefab, point, Quaternion.identity);
             controlPoints.Add(controlPoint);
+            GameObject leftTangentPoint = Instantiate(controlPointPrefab, point + leftTangent, Quaternion.identity);
+            leftTangentPoints.Add(leftTangentPoint);
+            GameObject rightTangentPoint = Instantiate(controlPointPrefab, point + rightTangent, Quaternion.identity);
+            rightTangentPoints.Add(rightTangentPoint);
         }
+
+        // deactivate tangent points at ends of spline (they technically don't exist)
+        leftTangentPoints[0].SetActive(false);
+        rightTangentPoints[pointCount - 1].SetActive(false);
     }
 
     // Update is called once per frame
